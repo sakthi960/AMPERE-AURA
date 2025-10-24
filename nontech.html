@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Technical Events - SPYRA 2K25</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgMove 10s ease infinite alternate;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #f093fb;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .nav-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 5% 50px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            letter-spacing: 5px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(240, 147, 251, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(240, 147, 251, 0.8);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 5rem 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .events-categories {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #f5576c;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(15, 15, 25, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            text-align: center;
+            animation: fadeInScale 0.6s ease backwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .event-card:nth-child(1) { animation-delay: 0.1s; }
+        .event-card:nth-child(2) { animation-delay: 0.2s; }
+        .event-card:nth-child(3) { animation-delay: 0.3s; }
+        .event-card:nth-child(4) { animation-delay: 0.4s; }
+        .event-card:nth-child(5) { animation-delay: 0.5s; }
+        .event-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #f093fb;
+            box-shadow: 0 20px 50px rgba(240, 147, 251, 0.4);
+        }
+
+        .event-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f093fb;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        .floating-spyra {
+            position: fixed;
+            top: 20px;
+            left: -200px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f093fb;
+            text-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
+            z-index: 1001;
+            animation: floatAcrossTop 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatAcrossTop {
+            0% { left: -200px; opacity: 1; }
+            90% { left: calc(100vw - 200px); opacity: 1; }
+            100% { left: calc(100vw - 200px); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .floating-spyra {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-spyra">⚡ SPYRA 2K25 ⚡</div>
+    <nav>
+        <div class="nav-header">
+            <img src="image/sypra logo.png.png" alt="SPYRA Logo" class="nav-logo">
+            <div>
+                <div class="logo">SPYRA 2K25</div>
+                <div class="subtitle">Symposium</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technical.html">Technical</a></li>
+            <li><a href="nontech.html" class="active">Non-Tech</a></li>
+            <li><a href="egaming.html">E-Gaming</a></li>
+        </ul>
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">🎮 Non-Technical Events</h1>
+        <p class="hero-subtitle">Fun and creative challenges for everyone</p>
+    </section>
+
+    <section class="events-section">
+        <div class="events-categories">
+            <h3 class="category-title">Non-Technical Events</h3>
+            <div class="events-grid">
+                <div class="event-card">
+                    <h4>Minute to Win It</h4>
+                    <p>Quick challenges that test your speed and creativity.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Wave Wire</h4>
+                    <p>Navigate through obstacles in this exciting game.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Treasure Hunt</h4>
+                    <p>Follow clues to find hidden treasures around the campus.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Reverse Engineering</h4>
+                    <p>Figure out how things work by taking them apart.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Podcast: Life of an ECE Student</h4>
+                    <p>Share your experiences and stories in a podcast format.</p>
+                </div>
+                <div class="event-card">
+                    <h4>Mind Capture</h4>
+                    <p>Test your memory and observation skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="margin-bottom: 1rem;">Ready to Join?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Register now and be part of SPYRA 2K25!</p>
+        <p>&copy; 2025 Grace College of Engineering - ECE Department. All rights reserved.</p>
+        <p style="margin-top: 1rem;">Contact: ece@grace.edu | +91 1234567890</p>
+    </footer>
+</body>
+</html>
