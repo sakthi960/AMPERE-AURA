@@ -1,11 +1,17 @@
 Add-Type -AssemblyName System.Drawing
-$img = [System.Drawing.Image]::FromFile('c:/mywebpage/image/sypra logo.png.png')
-$newWidth = [math]::Round($img.Width * 1.5)
-$newHeight = [math]::Round($img.Height * 1.5)
-$bitmap = New-Object System.Drawing.Bitmap $newWidth, $newHeight
-$graphics = [System.Drawing.Graphics]::FromImage($bitmap)
-$graphics.DrawImage($img, 0, 0, $newWidth, $newHeight)
-$bitmap.Save('c:/mywebpage/image/sypra logo.png.png')
-$img.Dispose()
-$bitmap.Dispose()
-$graphics.Dispose()
+
+try {
+    $img = [System.Drawing.Image]::FromFile('c:/mywebpage/image/college-name.png')
+    Write-Host "Original Width: $($img.Width), Height: $($img.Height)"
+    $newWidth = [math]::Round($img.Width * 2)
+    $newHeight = [math]::Round($img.Height * 2)
+    Write-Host "New Width: $newWidth, Height: $newHeight"
+    $bitmap = New-Object System.Drawing.Bitmap $img, $newWidth, $newHeight
+    $bitmap.Save('c:/mywebpage/image/college-name_resized.png', [System.Drawing.Imaging.ImageFormat]::Png)
+    Write-Host "Image resized and saved as college-name_resized.png"
+} catch {
+    Write-Host "Error: $($_.Exception.Message)"
+} finally {
+    if ($img) { $img.Dispose() }
+    if ($bitmap) { $bitmap.Dispose() }
+}
