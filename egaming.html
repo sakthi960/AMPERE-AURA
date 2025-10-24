@@ -26,15 +26,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.15) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.25) 0%, transparent 35%),
+                        radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.25) 0%, transparent 35%),
+                        radial-gradient(circle at 50% 20%, rgba(245, 87, 108, 0.2) 0%, transparent 45%);
             z-index: -1;
-            animation: bgMove 10s ease infinite alternate;
+            animation: pixelShift 12s ease-in-out infinite;
         }
 
-        @keyframes bgMove {
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.4) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(240, 147, 251, 0.4) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(245, 87, 108, 0.3) 2px, transparent 2px),
+                radial-gradient(circle at 30% 70%, rgba(102, 126, 234, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px, 70px 70px, 100px 100px, 60px 60px;
+            z-index: -1;
+            animation: pixelFall 15s linear infinite;
+        }
+
+        @keyframes pixelShift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(10px, -10px) scale(1.02); }
+            50% { transform: translate(-15px, 15px) scale(0.98); }
+            75% { transform: translate(20px, 5px) scale(1.01); }
+        }
+
+        @keyframes pixelFall {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            100% { transform: translate(0, 100px); }
         }
 
         /* Navigation */
@@ -443,7 +468,7 @@
             color: #f093fb;
             text-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
             z-index: 1001;
-            animation: floatAcrossTop 15s linear infinite;
+            animation: floatAcrossTop 15s linear infinite 2s;
             pointer-events: none;
         }
 
