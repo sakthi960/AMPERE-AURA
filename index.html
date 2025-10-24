@@ -39,7 +39,7 @@
 
         /* Navigation */
         nav {
-            position: fixed;
+            position: relative;
             top: 0;
             width: 100%;
             background: rgba(10, 10, 10, 0.9);
@@ -87,6 +87,85 @@
             color: #f093fb;
         }
 
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+            z-index: 1001;
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu li {
+            margin: 1rem 0;
+        }
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #f093fb;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(240, 147, 251, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(240, 147, 251, 0.5);
+            transform: rotate(90deg);
+        }
+
         .register-btn {
             position: fixed;
             right: 20px;
@@ -116,13 +195,7 @@
             gap: 1rem;
         }
 
-        .nav-logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-
-        /* Hero Section */
+/* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -796,13 +869,147 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .event-date {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .college-info {
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+            }
+
+            .college-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .college-info h3 {
+                font-size: 1.4rem;
+            }
+
+            .college-info p {
+                font-size: 0.9rem;
+            }
+
+            .pricing-title {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .card-title {
+                font-size: 2rem;
+            }
+
+            .price {
+                font-size: 2.8rem;
+            }
+
+            .events-title {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .timeline-card {
+                padding: 2rem;
+            }
+
+            .timeline-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .timeline-card p {
+                font-size: 1rem;
+            }
+
+            .category-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .event-card {
+                padding: 1.5rem;
+            }
+
+            .event-card h4 {
+                font-size: 1.3rem;
+            }
+
+            .event-card p {
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 80px 5% 30px;
+            }
+
+            .modal-title {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .register-btn {
+                right: 10px;
+                top: 50%;
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .floating-spyra {
+                font-size: 1rem;
+                top: 15px;
+            }
+
+            .nav-logo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 3rem;
+                letter-spacing: 3px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .event-date {
+                font-size: 1.1rem;
+            }
+
+            .college-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .college-text {
+                text-align: center;
             }
 
             .nav-links {
                 display: none;
+            }
+
+            .hamburger {
+                display: block;
             }
 
             .pricing-grid {
@@ -811,6 +1018,7 @@
 
             .event-slide {
                 min-width: 100%;
+                height: 300px;
             }
 
             .timeline-grid {
@@ -819,6 +1027,151 @@
 
             .timeline-card::before {
                 display: none;
+            }
+
+            .pricing-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .card-title {
+                font-size: 2.2rem;
+            }
+
+            .price {
+                font-size: 3rem;
+            }
+
+            .events-title {
+                font-size: 3rem;
+            }
+
+            .timeline-card h3 {
+                font-size: 1.8rem;
+            }
+
+            .category-title {
+                font-size: 2.2rem;
+            }
+
+            .modal-title {
+                font-size: 3rem;
+            }
+
+            .register-btn {
+                right: 15px;
+                padding: 0.9rem 1.2rem;
+            }
+
+            .floating-spyra {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+
+            .pricing-title {
+                font-size: 3rem;
+            }
+
+            .events-title {
+                font-size: 3.2rem;
+            }
+
+            .timeline-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline-card::before {
+                display: none;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .events-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .modal-content {
+                padding: 90px 5% 40px;
+            }
+
+            .modal-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
+            .pricing {
+                padding: 6rem 5%;
+            }
+
+            .highlighted-events {
+                padding: 6rem 5%;
+            }
+
+            .timeline-section {
+                padding: 6rem 5%;
+            }
+
+            .events-section {
+                padding: 6rem 5%;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .timeline-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .events-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .carousel-container {
+                max-width: 1600px;
+            }
+
+            .event-slide {
+                height: 450px;
+            }
+
+            .modal-content {
+                max-width: 1600px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+
+            .pricing-title {
+                font-size: 4rem;
+            }
+
+            .events-title {
+                font-size: 4rem;
+            }
+
+            .modal-title {
+                font-size: 4.5rem;
             }
         }
     </style>
@@ -837,9 +1190,9 @@
         }
 
         @keyframes floatAcrossTop {
-            0% { left: -200px; opacity: 1; }
-            90% { left: calc(100vw - 200px); opacity: 1; }
-            100% { left: calc(100vw - 200px); opacity: 0; }
+            0% { left: 55vw; opacity: 1; }
+            90% { left: 80vw; opacity: 1; }
+            100% { left: 80vw; opacity: 0; }
         }
 
         @media (max-width: 768px) {
@@ -865,7 +1218,18 @@
             <li><a href="nontech.html">Non-Tech</a></li>
             <li><a href="egaming.html">E-Gaming</a></li>
         </ul>
+        <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" onclick="toggleMobileMenu()">×</div>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="technical.html" onclick="toggleMobileMenu()">Technical</a></li>
+            <li><a href="nontech.html" onclick="toggleMobileMenu()">Non-Tech</a></li>
+            <li><a href="egaming.html" onclick="toggleMobileMenu()">E-Gaming</a></li>
+        </ul>
+    </div>
 
     <a href="#register" class="register-btn">Register</a>
 
@@ -922,7 +1286,7 @@
             <div class="timeline-card">
                 <div class="timeline-icon">💻</div>
                 <h3>Technical Events</h3>
-                <p>Explore technical events featuring paper presentations, circuit debugging, technical quiz, embedded challenges, and more!</p>
+                <p>Explore technical events featuring paper presentations, circuit debugging, technical quiz, Embedded-X, and more!</p>
                 <a href="technical.html" class="view-btn">View Events</a>
             </div>
             <div class="timeline-card">
@@ -948,75 +1312,13 @@
 
 
 
-    <section id="technical" class="events-section">
-        <div class="events-categories">
-            <div class="category">
-                <h3 class="category-title tech-color">🔧 Technical Events</h3>
-                <div class="events-grid">
-                    <div class="event-card">
-                        <h4>Paper Presentation</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Circuit Debugging</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Technical Quiz</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Embedded Challenge</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Soldering Showdown</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Wire It Up Challenge</h4>
-                    </div>
-                </div>
-            </div>
 
-            <div class="category">
-                <h3 class="category-title non-tech-color">🎮 Non-Technical Events</h3>
-                <div class="events-grid">
-                    <div class="event-card">
-                        <h4>Minute to Win It</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Wave Wire</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Treasure Hunt</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Reverse Engineering</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Podcast: Life of an ECE Student</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Mind Capture</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="category">
-                <h3 class="category-title" style="color: #f5576c;">🎮 E-Gaming Events</h3>
-                <div class="events-grid">
-                    <div class="event-card">
-                        <h4>PUBG Mobile Tournament</h4>
-                    </div>
-                    <div class="event-card">
-                        <h4>Free Fire Tournament</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <footer>
         <h2 style="margin-bottom: 1rem;">Ready to Join?</h2>
         <p style="font-size: 1.2rem; margin-bottom: 2rem;">Register now and be part of SPYRA 2K25!</p>
         <p>&copy; 2025 Grace College of Engineering - ECE Department. All rights reserved.</p>
-        <p style="margin-top: 1rem;">Contact: ece@grace.edu | +91 1234567890</p>
+        <p style="margin-top: 1rem;">Contact: spyra2k25@gmail.com | +91 1234567890</p>
     </footer>
 
     <script>
@@ -1084,6 +1386,12 @@
         updateDots();
 
 
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
 
         // Scroll animations
         const observerOptions = {
